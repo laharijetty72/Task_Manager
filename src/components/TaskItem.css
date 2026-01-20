@@ -1,0 +1,171 @@
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 16px;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+    border: 1px solid #f1f5f9;
+    transition: all var(--transition-fast);
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.task-item-completed .task-text {
+    text-decoration: line-through;
+    color: var(--color-text-secondary);
+}
+
+.task-item-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.task-text {
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    word-break: break-word;
+}
+
+.task-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Priority Badges */
+.task-priority {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.priority-high {
+    background-color: var(--color-danger);
+    color: white;
+}
+
+.priority-medium {
+    background-color: var(--color-warning);
+    color: white;
+}
+
+.priority-low {
+    background-color: var(--color-success);
+    color: white;
+}
+
+/* Action Buttons */
+.task-btn-edit {
+    padding: 6px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    background: white;
+    transition: var(--transition-fast);
+}
+
+.task-btn-edit:hover {
+    background-color: #f8fafc;
+    color: var(--color-primary);
+    border-color: #cbd5e1;
+}
+
+.task-btn-delete {
+    padding: 6px 12px;
+    background-color: var(--color-danger-bg);
+    color: var(--color-danger);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.task-btn-delete:hover {
+    background-color: #fee2e2;
+    /* slightly darker or same? maybe standard red */
+    background-color: #fecaca;
+}
+
+/* Checkbox Styling */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: 2px solid #cbd5e1;
+    border-radius: 4px;
+    transition: var(--transition-fast);
+}
+
+.checkbox-container:hover input~.checkmark {
+    border-color: var(--color-primary);
+}
+
+.checkbox-container input:checked~.checkmark {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+@media (max-width: 640px) {
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .task-item-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
